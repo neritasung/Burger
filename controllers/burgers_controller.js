@@ -16,7 +16,7 @@ router.get("/", function(req, res) {
 });
 
 // Route for adding data
-router.post("/", function(req, res) {
+router.post("/api/burgers", function(req, res) {
   burger.create([
     "burger_name", "delivered"
   ], [
@@ -27,7 +27,7 @@ router.post("/", function(req, res) {
 });
 
 // Route for updating data
-router.put("/:id", function(req, res) {
+router.put("/api/burgers:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
@@ -40,7 +40,7 @@ router.put("/:id", function(req, res) {
 });
 
 // route for deleting data
-router.delete("/:id", function(req, res) {
+router.delete("/api/burgers:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   burger.delete(condition, function() {
