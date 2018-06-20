@@ -17,7 +17,7 @@ router.get("/index", function(req, res) {
 
 
 router.post("/burgers/create", function(req, res) {
-  // console.log("inside api/burger"+req.body);
+  console.log(req.body);
   // takes the request object using it as input for buger.addBurger
   burger.create(req.body.burger_name, function(result) {
     // wrapper for orm.js that using MySQL insert callback will return a log to console,
