@@ -18,7 +18,7 @@ var orm = {
 
     //   Add burgers
     create: function (tableInput, column, burger_info, cb) {
-        var queryString = 'INSERT INTO ' + table + '(' + column + ') VALUES (?)';
+        var queryString = 'INSERT INTO ' + tableInput + '(' + column + ') VALUES (?)';
 
         connection.query(queryString, burger_info, function (err, result) {
             if (err) {
@@ -30,8 +30,8 @@ var orm = {
     },
 
     // Update burgers
-    update: function (table, column, colVals, condition, cb) {
-        var queryString = 'UPDATE ' + table + ' SET ' + col + '=?' + 'WHERE ' + condition + '=?';
+    update: function (tableInput, column, colVals, condition, cb) {
+        var queryString = 'UPDATE ' + tableInput + ' SET ' + col + '=?' + 'WHERE ' + condition + '=?';
         
         connection.query(queryString, [colVal], function (err, result) {
             if (err) {
@@ -41,8 +41,8 @@ var orm = {
             cb(result);
         });
     },
-    delete: function (table, condition, cb) {
-        var queryString = 'DELETE FROM ' + table + ' WHERE ' + condition + '=?';
+    delete: function (tableInput, condition, cb) {
+        var queryString = 'DELETE FROM ' + tableInput + ' WHERE ' + condition + '=?';
 
         connection.query(queryString, function (err, result) {
             if (err) {

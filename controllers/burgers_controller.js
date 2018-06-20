@@ -15,32 +15,34 @@ router.get("/", function(req, res) {
   });
 });
 
-// Route for adding data
+
 router.post("/api/burgers", function(req, res) {
-  burger.create([
-    "burger_name", "delivered"
-  ], [
-    req.body.burger_name, req.body.delivered
-  ], function() {
+  console.log("inside api/burger"+req.body);
+  // takes the request object using it as input for buger.addBurger
+  burger.create(req.body.burger_name, function(result) {
+    // wrapper for orm.js that using MySQL insert callback will return a log to console,
+    // render back to index with handle
+    console.log(result);
     res.redirect("/");
   });
-});
+ });
+
 
 // Route for updating data
-router.put("/api/burgers:id", function(req, res) {
+router.put("/api/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   console.log("condition", condition);
 
   burger.update({
-    delivered: req.body.delivered
+    delivered: true
   }, condition, function() {
     res.redirect("/");
   });
 });
 
 // route for deleting data
-router.delete("/api/burgers:id", function(req, res) {
+router.delete("/api/burgers/:id", function(req, res) {
   var condition = "id = " + req.params.id;
 
   burger.delete(condition, function() {
