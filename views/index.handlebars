@@ -5,7 +5,7 @@
     <br>
     <h3>Staff, please enter customer's order below, their order will be ready in 15 to 20 minutes!</h3>
     <hr>
-    <form action="/api/burgers" method="POST">
+    <form action="/burgers/create" method="POST">
         <div class="form-group">
             <label for="formGroupExampleInput">Enter customer's order here</label>
             <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Customers order">
@@ -34,7 +34,8 @@
                             </span>
                         </div>
                     </li>
-                    {{/unless}} {{/each}}
+                    {{/unless}} 
+                    {{/each}}
                 </ul>
             </div>
         </div>
@@ -49,7 +50,8 @@
                         <li class="list-group-item">
                             <p class="lead">{{this.burger_name}} </p>
                         </li>
-                        {{/if}} {{/each}}
+                        {{/if}} 
+                        {{/each}}
                     </ul>
                 </div>
             </div>

@@ -17,10 +17,10 @@ var orm = {
     },
 
     //   Add burgers
-    create: function (tableInput, column, burger_info, cb) {
+    create: function (tableInput, column, burger_name, cb) {
         var queryString = 'INSERT INTO ' + tableInput + '(' + column + ') VALUES (?)';
 
-        connection.query(queryString, burger_info, function (err, result) {
+        connection.query(queryString, burger_name, function (err, result) {
             if (err) {
                 throw err;
             }
@@ -41,17 +41,6 @@ var orm = {
             cb(result);
         });
     },
-    delete: function (tableInput, condition, cb) {
-        var queryString = 'DELETE FROM ' + tableInput + ' WHERE ' + condition + '=?';
-
-        connection.query(queryString, function (err, result) {
-            if (err) {
-                throw err;
-            }
-
-            cb(result);
-        });
-    }
 };
 
 // Export the orm object for the model.

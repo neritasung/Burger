@@ -5,7 +5,7 @@ var router = express.Router();
 var burger = require("../models/burger.js");
 
 //Route for getting all data
-router.get("/", function(req, res) {
+router.get("/index", function(req, res) {
   burger.all(function(data) {
     var hbsObject = {
       burgers: data
@@ -16,37 +16,24 @@ router.get("/", function(req, res) {
 });
 
 
-router.post("/api/burgers", function(req, res) {
-  console.log("inside api/burger"+req.body);
+router.post("/burgers/create", function(req, res) {
+  // console.log("inside api/burger"+req.body);
   // takes the request object using it as input for buger.addBurger
   burger.create(req.body.burger_name, function(result) {
     // wrapper for orm.js that using MySQL insert callback will return a log to console,
     // render back to index with handle
-    console.log(result);
-    res.redirect("/");
+    // console.log(result);
+    res.redirect("/index");
   });
  });
 
 
 // Route for updating data
-router.put("/api/burgers/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-
-  console.log("condition", condition);
-
-  burger.update({
-    delivered: true
-  }, condition, function() {
-    res.redirect("/");
-  });
-});
-
-// route for deleting data
-router.delete("/api/burgers/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-
-  burger.delete(condition, function() {
-    res.redirect("/");
+router.post('/burger/deliver/:id', function (req, res) 
+{
+  burger.updateOne(req.params.id, function() 
+  {
+    res.redirect('/index');
   });
 });
 
