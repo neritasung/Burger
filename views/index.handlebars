@@ -11,7 +11,7 @@
             <input name="burger_name" type="text" class="form-control" id="formGroupExampleInput" placeholder="Customers order">
             <br>
             <button class="btn btn-danger btn-lg">
-                <span class="fas fa-check-square"></span> Submit Order</button>
+                <span class="fas fa-check-square"></span> Submit Order {{burger_name}}</button>
         </div>
     </form>
 
@@ -30,7 +30,7 @@
                                     <input type="hidden" name="delivered" value="true">
                                     {{!-- <button class="btn btn-default btn-lg" type="submit"> Ready to deliver to customer! </button> --}}
                                 {{!-- </form> --}}
-                            <button class="btn btn-default btn-lg" data-id={{id}} data-status={{delivered}}>Ready to deliver to customer!</button>    
+                            <button class="btn btn-default btn-lg" {{id}} {{delivered}}>Ready to deliver to customer!</button>    
                             </span>
                         </div>
                     </li>
