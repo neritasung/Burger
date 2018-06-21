@@ -16,4 +16,4 @@ TECHNOLOGIES USED:
 - handlebars NPM Package
 - mysql NPM Package
 
-LINK TO HEROKU: 
+LINK TO HEROKU: https://shrouded-stream-58793.herokuapp.com/
